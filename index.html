@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulang ke Bengkulu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div id="title">
+            <h1>Pulang ke Bengkulu</h1>
+            <p class="sub">a soundscape of home &middot; Laksa Fadhil Yansen</p>
+        </div>
+
+        <button id="menuBtn" aria-label="Open menu">
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </header>
+
+    <nav id="menu">
+        <p class="label">Scenes</p>
+        <ol>
+            <li><button onclick="jumpToScene(0)">Arunika di Pantai Panjang</button></li>
+            <li><button onclick="jumpToScene(1)">Badminton Pagi</button></li>
+            <li><button onclick="jumpToScene(2)">Tabot</button></li>
+            <li><button onclick="jumpToScene(3)">Hujan Sore</button></li>
+        </ol>
+
+        <p class="label">About</p>
+        <p class="about">
+            Pulang ke Bengkulu means "going home to Bengkulu". This is an 82-second
+            soundscape of the moments I always come back to when I'm home:
+            the beach at dawn, morning badminton, the Tabot festival, and afternoon rain.
+            The photos follow the sound as it plays.
+        </p>
+
+        <p class="label">Credits</p>
+        <p class="about">
+            Photos by Laksa Fadhil Yansen.<br>
+            Waves: "waves on embankment river" by klankbeeld (freesound.org).<br>
+            Badminton, Tabot and rain recordings collected by Laksa Fadhil Yansen.
+        </p>
+    </nav>
+
+    <main>
+
+        <section id="gallery">
+            <figure class="photo" onclick="jumpToScene(0)">
+                <div class="frame effect-breathe">
+                    <img id="pantaiImg" src="images/pantai.jpg" alt="Pantai Panjang beach in Bengkulu, waves on the horizon">
+                </div>
+                <figcaption>01 &mdash; Arunika di Pantai Panjang</figcaption>
+            </figure>
+
+            <figure class="photo" onclick="jumpToScene(1)">
+                <div class="frame effect-rally">
+                    <img src="images/badminton.jpg" alt="Morning badminton on a green indoor court">
+                </div>
+                <figcaption>02 &mdash; Badminton Pagi</figcaption>
+            </figure>
+
+            <figure class="photo" onclick="jumpToScene(2)">
+                <div class="frame effect-beat">
+                    <img id="tabotImg" src="images/tabot.jpg" alt="Tall decorated tabot towers paraded through the street">
+                </div>
+                <figcaption>03 &mdash; Tabot</figcaption>
+            </figure>
+
+            <figure class="photo" onclick="jumpToScene(3)">
+                <div class="frame effect-rain" id="rainFrame">
+                    <img src="images/hujan.jpg" alt="Heavy afternoon rain on a street lined with trees">
+                </div>
+                <figcaption>04 &mdash; Hujan Sore</figcaption>
+            </figure>
+        </section>
+
+        <section id="now">
+            <p id="sceneNumber">&mdash; / 04</p>
+            <h2 id="sceneTitle">Press play to go home.</h2>
+            <p id="sceneText">Put your headphones on. Click play, or click any photo to start from that moment.</p>
+        </section>
+
+        <section id="controls">
+            <audio id="player" preload="auto">
+                <source src="audio/soundscape.mp3" type="audio/mpeg">
+                This browser does not support audio.
+            </audio>
+
+            <div id="progress">
+                <div id="progressBar"></div>
+                <span class="tick" style="left: 26.2%;"></span>
+                <span class="tick" style="left: 50.6%;"></span>
+                <span class="tick" style="left: 75%;"></span>
+            </div>
+
+            <div class="buttons">
+                <button id="playBtn">Play</button>
+                <button id="pauseBtn">Pause</button>
+                <button id="stopBtn">Stop</button>
+                <span class="divider"></span>
+                <button id="volDownBtn">Vol &minus;</button>
+                <button id="volUpBtn">Vol +</button>
+                <button id="speedBtn">Speed 1&times;</button>
+            </div>
+
+            <p id="message">0:00 / 1:22 &middot; volume 100%</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>CCT360 Lab 5 by Laksa Fadhil Yansen</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+body {
+    margin: 0;
+    font-family: "Jost", sans-serif;
+    font-weight: 300;
+    background-color: #eef2ea;
+    color: #2f3a32;
+}
+
+header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 60px 0;
+}
+
+h1 {
+    margin: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    font-size: 2.6rem;
+    letter-spacing: 0.02em;
+    color: #2e5d4b;
+}
+
+.sub {
+    margin: 6px 0 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #7c8b7f;
+}
+
+#menuBtn {
+    width: 64px;
+    height: 34px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#menuBtn .line {
+    display: block;
+    height: 3px;
+    margin: 8px 0;
+    background-color: #2f3a32;
+    transition: transform 0.4s;
+}
+
+#menuBtn.open .line:first-child {
+    transform: translateY(5.5px) rotate(20deg);
+}
+
+#menuBtn.open .line:last-child {
+    transform: translateY(-5.5px) rotate(-20deg);
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    width: 340px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 120px 40px 40px;
+    background-color: #dfe7da;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+}
+
+#menu.open {
+    transform: translateX(0);
+}
+
+#menu .label {
+    margin: 0 0 12px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #7c8b7f;
+}
+
+#menu ol {
+    margin: 0 0 36px;
+    padding-left: 20px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.4rem;
+    color: #2e5d4b;
+}
+
+#menu ol button {
+    padding: 4px 0;
+    background: none;
+    border: none;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.4rem;
+    color: #2e5d4b;
+    cursor: pointer;
+}
+
+#menu ol button:hover {
+    color: #5f7f66;
+    font-style: italic;
+}
+
+#menu .about {
+    margin: 0 0 36px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+#gallery {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 80px 60px 0;
+}
+
+.photo {
+    flex: 1;
+    margin: 0;
+    cursor: pointer;
+}
+
+.frame {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.8s ease;
+}
+
+.frame img {
+    display: block;
+    width: 100%;
+    transition: filter 0.8s, opacity 0.8s;
+}
+
+.photo:hover img {
+    opacity: 0.85;
+}
+
+figcaption {
+    margin-top: 12px;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #7c8b7f;
+    transition: color 0.8s;
+}
+
+body.listening .photo img {
+    filter: grayscale(100%);
+    opacity: 0.4;
+}
+
+body.listening .photo:hover img {
+    opacity: 0.7;
+}
+
+body.listening .photo.active img {
+    filter: none;
+    opacity: 1;
+}
+
+.photo.active .frame {
+    transform: translateY(-12px);
+}
+
+.photo.active figcaption {
+    color: #2e5d4b;
+}
+
+.photo.active .effect-breathe img {
+    animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.07); }
+    100% { transform: scale(1); }
+}
+
+.photo.active .effect-beat img {
+    animation: beat 0.45s ease-out infinite;
+}
+
+@keyframes beat {
+    0%   { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.drop {
+    display: none;
+    position: absolute;
+    top: -15%;
+    width: 1px;
+    height: 70px;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85));
+}
+
+.photo.active .drop {
+    display: block;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(1400%); }
+}
+
+body.paused .frame img,
+body.paused .shuttle,
+body.paused .drop {
+    animation-play-state: paused;
+}
+
+#now {
+    max-width: 700px;
+    padding: 60px 60px 0;
+}
+
+#sceneNumber {
+    margin: 0;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #7c8b7f;
+}
+
+#sceneTitle {
+    margin: 8px 0 10px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    font-size: 2.2rem;
+    color: #2e5d4b;
+}
+
+#sceneText {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+#controls {
+    padding: 40px 60px 0;
+}
+
+#progress {
+    position: relative;
+    height: 3px;
+    padding: 8px 0;
+    background-color: #c8d3c4;
+    background-clip: content-box;
+    cursor: pointer;
+}
+
+#progressBar {
+    pointer-events: none;
+    width: 0%;
+    height: 100%;
+    background-color: #5f7f66;
+}
+
+.tick {
+    pointer-events: none;
+    position: absolute;
+    top: 4px;
+    width: 1px;
+    height: 11px;
+    background-color: #7c8b7f;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 26px;
+    margin-top: 22px;
+}
+
+.buttons button {
+    padding: 4px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid transparent;
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #2f3a32;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.buttons button:hover {
+    color: #5f7f66;
+    border-bottom-color: #5f7f66;
+}
+
+.divider {
+    width: 1px;
+    height: 14px;
+    background-color: #c8d3c4;
+}
+
+#message {
+    margin: 14px 0 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: #7c8b7f;
+}
+
+footer {
+    padding: 80px 60px 40px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #7c8b7f;
+}
+
+@media (max-width: 800px) {
+    header,
+    #gallery,
+    #now,
+    #controls,
+    footer {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    #gallery {
+        flex-wrap: wrap;
+        gap: 20px;
+        padding-top: 50px;
+    }
+
+    .photo {
+        flex: 1 1 40%;
+    }
+
+    #menu {
+        width: 100%;
+    }
+}
